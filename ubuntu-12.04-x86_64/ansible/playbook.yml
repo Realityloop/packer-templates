@@ -1,0 +1,42 @@
+---
+- hosts: all
+
+  vars_files:
+    - config.yml
+    - local.config.yml
+
+  vars:
+    galaxy_requirements: "requirements.txt"
+
+  pre_tasks:
+    - include: tasks/init-debian.yml
+    - include: tasks/update-roles.yml
+
+  roles:
+    - geerlingguy.firewall
+    - geerlingguy.git
+    - geerlingguy.apache
+    - geerlingguy.mysql
+    - geerlingguy.php
+    - geerlingguy.php-pecl
+    - geerlingguy.php-mysql
+    - geerlingguy.composer
+    - geerlingguy.drush
+
+    # Conditionally-installed roles.
+    - { role: geerlingguy.memcached, when: '"memcached" in installed_extras' }
+    - { role: geerlingguy.php-memcached, when: '"memcached" in installed_extras' }
+    - { role: geerlingguy.php-xdebug, when: '"xdebug" in installed_extras' }
+    - { role: geerlingguy.php-xhprof, when: '"xhprof" in installed_extras' }
+    - { role: geerlingguy.adminer, when: '"adminer" in installed_extras' }
+    - { role: geerlingguy.pimpmylog, when: '"pimpmylog" in installed_extras' }
+    - { role: geerlingguy.daemonize, when: '"mailhog" in installed_extras' }
+    - { role: geerlingguy.mailhog, when: '"mailhog" in installed_extras' }
+    - { role: geerlingguy.java, when: '"solr" or "selenium" in installed_extras' }
+    - { role: arknoll.selenium, when: '"selenium" in installed_extras' }
+    - { role: geerlingguy.solr, when: '"solr" in installed_extras' }
+    - { role: geerlingguy.varnish, when: '"varnish" in installed_extras' }
+    - { role: geerlingguy.drupal-console, when: '"drupal-console" in installed_extras' }
+
+  tasks:
+    - include: tasks/extras.yml

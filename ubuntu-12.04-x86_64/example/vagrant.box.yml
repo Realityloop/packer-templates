@@ -1,0 +1,18 @@
+---
+# Vagrant base box
+vagrant_box: 8thom/dmbox
+
+# Vagrant hostname and IP configuration.
+vagrant_hostname: dmbox.local
+vagrant_ip: 192.168.24.4
+
+# A list of synced folders, with the keys 'local_path', 'destination', and 'id'.
+vagrant_synced_folders:
+  - local_path: .
+    destination: /drupal
+    id: drupal
+    type: nfs
+
+# Memory and CPU to use for this VM.
+vagrant_memory: 1024
+vagrant_cpus: 2

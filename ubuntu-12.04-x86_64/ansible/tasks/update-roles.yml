@@ -1,0 +1,5 @@
+---
+- name: Update ansible roles.
+  shell: >
+    ansible-galaxy install --force -r {{ galaxy_requirements }}
+  when: update_ansible_roles
