@@ -7,13 +7,13 @@
 ## Test Build 
 
 ```
-packer push -name DrupalMel/box-dev template.json
+$ packer push -name DrupalMel/box-dev template.json
 ```
 
 ## Build new release 
 
 ```
-packer push -name DrupalMel/box template.json
+$ packer push -name DrupalMel/box template.json
 ```
 
 ## Vagrant
@@ -25,5 +25,7 @@ Only ```Vagrantfile``` & ```vagrant.box.yml``` are required.
 To override the box config copy/rename vagrant.ansible.yml.default to vagrant.ansible.yml and update as required.
 
 Changes made to this file are only applied during the initial vagrant up or when you run ```vagrant provision```
+
+Only overrides are needed in vagrant.ansible.yml as anything not defined will use the default config in vagrant.ansible.yml.default or the default config of the ansible roles.
 
 No provisioning will occur if vagrant.ansible.yml doesn't exist. 
