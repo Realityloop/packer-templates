@@ -1,6 +1,6 @@
 ---
 # Vagrant base box
-vagrant_box: 8thom/dmbox
+vagrant_box: DrupalMel/box
 
 # Vagrant hostname and IP configuration.
 vagrant_hostname: dmbox.local
