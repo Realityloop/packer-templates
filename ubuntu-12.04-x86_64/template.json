@@ -6,6 +6,7 @@
     "ssh_name": "vagrant",
     "ssh_pass": "vagrant",
     "ansible_dir": "ansible",
+    "ansible_config": "{{env `ANSIBLE_CONFIG`}}",
     "ansible_playbook": "ansible/playbook.yml",
     "ansible_staging_dir": "/ansible"
   },
@@ -51,6 +52,11 @@
       "type": "file",
       "source": "{{user `ansible_dir`}}/",
       "destination": "{{user `ansible_staging_dir`}}"
+    },
+    {
+      "type": "file",
+      "source": "{{user `ansible_config`}}",
+      "destination": "{{user `ansible_staging_dir`}}/box.config.yml"
     },
     {
       "type": "shell",

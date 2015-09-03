@@ -2,8 +2,8 @@
 - hosts: all
 
   vars_files:
-    - config.yml
-    - local.config.yml
+    - box.config.yml
+    - vagrant.config.yml
 
   vars:
     galaxy_requirements: "requirements.txt"
