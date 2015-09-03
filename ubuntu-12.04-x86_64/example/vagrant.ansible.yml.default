@@ -11,8 +11,8 @@ installed_extras:
   - varnish
   - xdebug
   - xhprof
+  - selenium
   # - drupal-console
-  # - selenium
   # - solr
 
 # Add any extra packages you'd like to install.
@@ -39,7 +39,7 @@ varnish_storage: "malloc,256m"
 apache_remove_default_vhost: true
 apache_listen_port: 80
 apache_vhosts:
-  - servername: "acquia-vagrant.local"
+  - servername: "dmbox.local"
     documentroot: "/drupal"
 
 # PHP config
