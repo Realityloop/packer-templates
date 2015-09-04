@@ -34,9 +34,9 @@ Vagrant.configure("2") do |config|
   if File.exist?(ansible_config)
 
     # Upload vagrant.ansible.yml
-    config.vm.provision "vagrant.ansible.yml", type: "file" do |s|
+    config.vm.provision "ansible_config", type: "file" do |s|
      s.source = ansible_config
-     s.destination = "/ansible/local.config.yml"
+     s.destination = "/ansible/vagrant.ansible.yml"
     end
 
     # Provision box
