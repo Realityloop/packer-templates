@@ -1,4 +1,23 @@
 ---
+# Drupal settings
+drupal_major_version: 7
+drupal_core_path: "/drupal"
+drupal_site_name: "Drupal"
+drupal_install_profile: standard
+drupal_enable_modules: [ 'devel' ]
+drupal_account_name: admin
+drupal_account_pass: admin
+drupal_mysql_user: root
+drupal_mysql_password: root
+drupal_mysql_database: dmbox
+
+# Drush site install
+install_site: false
+
+# Make file config
+build_makefile: false
+drush_makefile_path: /vagrant/drupal.make.yml
+
 # Update anisble roles before provisioning.
 update_ansible_roles: no
 
@@ -53,7 +72,7 @@ php_opcache_memory_consumption: "128"
 php_opcache_max_accelerated_files: 4096
 
 # Drush config
-drush_version: "7.x"
+drush_version: "7.0.0-rc2"
 drush_keep_updated: yes
 
 # MySQL Config

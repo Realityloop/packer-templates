@@ -39,4 +39,19 @@
     - { role: geerlingguy.drupal-console, when: '"drupal-console" in installed_extras' }
 
   tasks:
+    - name: Check if Drupal is already set up.
+      stat: "path={{ drupal_core_path }}/index.php"
+      register: drupal_site
+
     - include: tasks/extras.yml
+    - include: tasks/www.yml
+    - include: tasks/apparmor.yml
+      when: ansible_os_family == 'Debian'
+
+    # Build makefile if configured.
+    - include: tasks/build-makefile.yml
+      when: build_makefile
+
+    # Install site if configured.
+    - include: tasks/install-site.yml
+      when: install_site
