@@ -9,7 +9,7 @@
     - dialout
 
 - name: Ensure vagrant user is in admin group.
-  user: "name={{ vagrant_user }} append=yes groups=admin"
+  user: "name=vagrant append=yes groups=admin"
 
 - name: Ensure www-data user is in dialout group (Debian).
   user: "name=www-data append=yes groups=dialout"
