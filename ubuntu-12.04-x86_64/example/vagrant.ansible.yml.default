@@ -35,7 +35,9 @@ installed_extras:
   # - solr
 
 # Add any extra packages you'd like to install.
-extra_packages: []
+extra_packages:
+  - imagemagick
+  - unzip
 
 # Firewall config
 firewall_allowed_tcp_ports:
