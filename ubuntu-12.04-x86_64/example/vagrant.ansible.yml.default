@@ -75,7 +75,6 @@ php_opcache_max_accelerated_files: 4096
 
 # Drush config
 drush_version: "7.0.0-rc2"
-drush_keep_updated: yes
 
 # MySQL Config
 mysql_root_password: root
