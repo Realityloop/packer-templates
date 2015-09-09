@@ -52,6 +52,10 @@
     - include: tasks/build-makefile.yml
       when: build_makefile
 
+    # Create symlinks.
+    - include: tasks/create-symlinks.yml
+      when: symlinks
+
     # Install site if configured.
     - include: tasks/install-site.yml
       when: install_site

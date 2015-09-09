@@ -18,6 +18,9 @@ install_site: false
 build_makefile: false
 drush_makefile_path: /vagrant/drupal.make.yml
 
+# Symlinks
+symlinks: no
+
 # Update anisble roles before provisioning.
 update_ansible_roles: no
 
