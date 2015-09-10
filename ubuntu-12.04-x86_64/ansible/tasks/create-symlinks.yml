@@ -1,4 +1,11 @@
 ---
+- name: Ensure symlink dest is empty.
+  file:
+    path: "{{ item.link }}"
+    state: absent
+  when: "{{ item.force | default('false') }}"
+  with_items: symlinks
+
 - name: Create symlinks.
   file:
     src: "{{ item.src }}"
