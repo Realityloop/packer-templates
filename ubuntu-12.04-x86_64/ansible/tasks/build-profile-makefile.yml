@@ -1,0 +1,31 @@
+---
+- name: Ensure drupal_core_path directory exists.
+  file:
+    path: "{{ drupal_core_path }}"
+    state: directory
+    mode: 0775
+  sudo: no
+  when: drupal_site.stat.exists == false
+
+- name: Generate Drupal site with drush makefile.
+  command: >
+    {{ drush_path }} make -y {{ drush_makefile_path }} --no-gitinfofile --no-recursion
+    chdir={{ drupal_core_path }}
+  when: drupal_site.stat.exists == false
+  sudo: no
+
+- name: Delete old profile
+  command: >
+    rm -rf {{ drupal_core_path }}/profiles/{{ drupal_project_name }}
+  when: drupal_site.stat.exists == false
+
+- name: Symbolic link
+  command: >
+    ln -s ../.. {{ drupal_core_path }}/profiles/{{ drupal_project_name }}
+  when: drupal_site.stat.exists == false
+
+- name: Build profile makefile
+  command: >
+    {{ drush_path }} make -y {{ drupal_profile_makefile }} --no-gitinfofile --no-core  --contrib-destination=. --overwrite
+    chdir=/drupal
+  when: drupal_site.stat.exists == false

@@ -1,7 +1,4 @@
 ---
-# Vagrant base box
-vagrant_box: DrupalMel/box
-
 # Vagrant hostname and IP configuration.
 vagrant_hostname: dmbox.local
 vagrant_ip: 192.168.24.4

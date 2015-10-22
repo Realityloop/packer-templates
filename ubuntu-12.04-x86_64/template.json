@@ -85,6 +85,7 @@
       {
         "type": "vagrant",
         "compression_level": 9,
+        "vagrantfile_template": "example/Vagrantfile",
         "output": "{{user `atlas_username`}}-{{user `atlas_name`}}-{{.Provider}}.box"
       },
       {

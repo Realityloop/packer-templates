@@ -2,18 +2,33 @@
 # vi: set ft=ruby :
 
 require 'yaml'
-dir = File.dirname(File.expand_path(__FILE__))
-vagrant_config = "#{dir}/vagrant.box.yml"
-if !File.exist?(vagrant_config)
-  raise 'Vagrant configuration file vagrant.box.yml not found!'
+dir = Dir.pwd
+
+# Default vagrant config.
+vconfig = {
+  "vagrant_hostname" => "dmbox.local",
+  "vagrant_ip" => "192.168.24.4",
+  "vagrant_synced_folders" => [{
+    "local_path" => ".",
+    "destination" => "/drupal",
+    "id" => "drupal",
+    "type" => "nfs"
+  }],
+  "vagrant_memory" => 1024,
+  "vagrant_cpus" => 2
+}
+
+# User defined vagrant config.
+vagrant_config = "#{dir}/.vagrant.config.yml"
+if File.exist?(vagrant_config)
+  user_config = YAML::load_file(vagrant_config)
+  vconfig = vconfig.merge user_config
 end
-vconfig = YAML::load_file(vagrant_config)
 
 Vagrant.require_version '>= 1.7.0'
 
 Vagrant.configure("2") do |config|
 
-  config.vm.box = vconfig['vagrant_box']
   config.vm.hostname = vconfig['vagrant_hostname']
   config.vm.network :private_network, ip: vconfig['vagrant_ip']
   config.ssh.insert_key = false
@@ -30,10 +45,10 @@ Vagrant.configure("2") do |config|
   end
 
   # Ansible
-  ansible_config = "#{dir}/vagrant.ansible.yml"
+  ansible_config = "#{dir}/.vagrant.ansible.yml"
   if File.exist?(ansible_config)
 
-    # Upload vagrant.ansible.yml
+    # Upload .vagrant.ansible.yml
     config.vm.provision "ansible_config", type: "file" do |s|
      s.source = ansible_config
      s.destination = "/ansible/vagrant.config.yml"

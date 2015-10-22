@@ -50,11 +50,11 @@
 
     # Build makefile if configured.
     - include: tasks/build-makefile.yml
-      when: build_makefile
+      when: build_makefile and drupal_project_type != 'profile'
 
-    # Create symlinks.
-    - include: tasks/create-symlinks.yml
-      when: symlinks
+    # Build profile based makefile.
+    - include: tasks/build-profile-makefile.yml
+      when: build_makefile and drupal_project_type == 'profile'
 
     # Install site if configured.
     - include: tasks/install-site.yml

@@ -19,6 +19,8 @@ Host *acquia.com
     StrictHostKeyChecking no
 Host *drush.in.com
     StrictHostKeyChecking no
+Host *git.realityloop.com
+    StrictHostKeyChecking no
 " > /root/.ssh/config
 chmod 600 /root/.ssh/config
 
