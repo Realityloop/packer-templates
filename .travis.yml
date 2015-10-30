@@ -20,7 +20,7 @@ install:
   - "{ echo '[defaults]'; echo 'roles_path = ../'; } >> ansible.cfg"
 
   # Install required dependencies.
-  - ansible-galaxy install -r $ANSIBLE_ROOT/requirements.txt
+  - ansible-galaxy install -r $ANSIBLE_ROOT/requirements.yml
 
 script:
   # Check the role/playbook's syntax.

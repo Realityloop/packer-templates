@@ -62,7 +62,7 @@
       "type": "shell",
       "execute_command": "sudo bash '{{.Path}}'",
       "inline": [
-        "ansible-galaxy install --ignore-errors -r {{user `ansible_staging_dir`}}/requirements.txt"
+        "ansible-galaxy install --ignore-errors -r {{user `ansible_staging_dir`}}/requirements.yml"
       ]
     },
     {

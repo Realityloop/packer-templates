@@ -6,7 +6,7 @@
     - vagrant.config.yml
 
   vars:
-    galaxy_requirements: "requirements.txt"
+    galaxy_requirements: "requirements.yml"
 
   pre_tasks:
     - include: tasks/init-debian.yml
