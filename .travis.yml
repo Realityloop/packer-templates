@@ -1,15 +1,19 @@
 ---
 language: python
 python: "2.7"
+sudo: false
 
 env:
   - PLAYBOOK=playbook.yml ANSIBLE_ROOT=ubuntu-12.04-x86_64/ansible ANSIBLE_CONF=ubuntu-12.04-x86_64/example/vagrant.ansible.yml.default
 
+addons:
+  apt:
+    sources:
+    - ppa:ondrej/php5
+    packages:
+    - curl
+
 before_install:
-  - sudo add-apt-repository ppa:ondrej/php5 -y
-  - sudo apt-get update -q
-  - sudo apt-get update -qq
-  - sudo apt-get install curl
   - cp $ANSIBLE_CONF $ANSIBLE_ROOT/box.config.yml
 
 install:
