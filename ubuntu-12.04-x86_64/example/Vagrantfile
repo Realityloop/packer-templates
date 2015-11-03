@@ -45,19 +45,17 @@ Vagrant.configure("2") do |config|
   # Ansible
   ansible_config = "#{dir}/.vagrant.ansible.yml"
   if File.exist?(ansible_config)
-
     # Upload .vagrant.ansible.yml
     config.vm.provision "ansible_config", type: "file" do |s|
      s.source = ansible_config
      s.destination = "/ansible/vagrant.config.yml"
     end
+  end
 
-    # Provision box
-    config.vm.provision "ansible", type: "shell" do |s|
-      s.privileged = true
-      s.inline = 'ANSIBLE_FORCE_COLOR=1 PYTHONUNBUFFERED=1 ansible-playbook /ansible/playbook.yml --sudo -c local -i "127.0.0.1vagrant,"'
-    end
-
+  # Provision box
+  config.vm.provision "ansible", type: "shell" do |s|
+    s.privileged = true
+    s.inline = 'ANSIBLE_FORCE_COLOR=1 PYTHONUNBUFFERED=1 ansible-playbook /ansible/playbook.yml --sudo -c local -i "127.0.0.1vagrant,"'
   end
 
   # VirtualBox.
