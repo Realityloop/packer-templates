@@ -9,7 +9,7 @@ drupal_account_name: admin
 drupal_account_pass: admin
 drupal_mysql_user: root
 drupal_mysql_password: root
-drupal_mysql_database: dmbox
+drupal_mysql_database: rlbox
 
 # Drush site install
 install_site: false
@@ -63,7 +63,7 @@ varnish_storage: "malloc,256m"
 apache_remove_default_vhost: true
 apache_listen_port: 80
 apache_vhosts:
-  - servername: "dmbox.local"
+  - servername: "rlbox.local"
     documentroot: "/drupal"
 
 # PHP config
@@ -82,7 +82,7 @@ drush_version: "7.0.0-rc2"
 # MySQL Config
 mysql_root_password: root
 mysql_databases:
-  - name: dmbox
+  - name: rlbox
     encoding: utf8
     collation: utf8_general_ci
 

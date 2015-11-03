@@ -22,3 +22,4 @@ geerlingguy.repo-remi
 geerlingguy.security
 geerlingguy.solr
 geerlingguy.varnish
+pwelch.avahi

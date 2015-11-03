@@ -22,6 +22,7 @@
     - geerlingguy.php-mysql
     - geerlingguy.composer
     - geerlingguy.drush
+    - pwelch.avahi
 
     # Conditionally-installed roles.
     - { role: geerlingguy.memcached, when: '"memcached" in installed_extras' }

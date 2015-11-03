@@ -1,7 +1,6 @@
 ---
-# Vagrant hostname and IP configuration.
-vagrant_hostname: dmbox.local
-vagrant_ip: 192.168.24.4
+# Vagrant hostname.
+vagrant_hostname: rlbox.local
 
 # A list of synced folders, with the keys 'local_path', 'destination', and 'id'.
 vagrant_synced_folders:
