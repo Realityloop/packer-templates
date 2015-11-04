@@ -2,11 +2,21 @@
 # vi: set ft=ruby :
 
 require 'yaml'
-dir = Dir.pwd
+
+# Iterate over directories to find the owner of the VagrantFile
+paths = Dir.pwd.split('/')
+hostname = nil
+while hostname == nil do
+  dir = paths.join('/')
+  current = paths.pop
+  if File.exists?("#{dir}/VagrantFile")
+    hostname = current.gsub('.', '')
+  end
+end
 
 # Default vagrant config.
 vconfig = {
-  "vagrant_hostname" => "rlbox.local",
+  "vagrant_hostname" => "#{hostname}.local",
   "vagrant_synced_folders" => [{
     "local_path" => ".",
     "destination" => "/drupal",
